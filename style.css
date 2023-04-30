@@ -1,0 +1,168 @@
+/* Set up */
+@font-face {
+    font-family: 'PoppinsItalic';
+    src: url('/assets/fonts/Poppins-Italic.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'PoppinsBold';
+    src: url('./assets/fonts/Poppins-Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'PoppinsXBoldItalic';
+    src: url('./assets/fonts/Poppins-ExtraBoldItalic.ttf') format('truetype');
+}
+
+:root{
+    --primary-color: hsl(259, 100%, 65%);
+    --error-color: hsl(0, 100%, 67%);
+    --shadow-color: hsl(0, 0%, 86%);
+    --primary-bg-color: hsl(0, 0%, 94%);
+    --calculator-bg-color: hsl(0, 0%, 100%);
+    --gray-color: hsl(0, 1%, 44%);
+
+    --calculator-border-radius: 35px;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+/*  */
+
+body{
+    font-family: 'PoppinsBold';
+    background-color: var(--primary-bg-color);
+}
+
+main{
+    min-height: 95vh;
+    justify-items: center;
+}
+
+/* Utility classes */
+.grid-flow{
+    display: grid;
+    align-items: center;
+    gap: 1em;
+}
+.flexbox{
+    display: flex;
+    gap: 1em;
+}
+/*  */
+
+.age-calculator{
+    padding: 3em 1.5em; 
+    max-width: 95%;
+    border-radius:
+     var(--calculator-border-radius)  
+     var(--calculator-border-radius) 
+     calc(var(--calculator-border-radius)*3.5) 
+     var(--calculator-border-radius);
+    background-color: var(--calculator-bg-color);
+}
+
+label{
+    text-transform: uppercase;
+    color: var(--gray-color);
+    letter-spacing: 3px;
+}
+
+.input-group{
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+    width: 6em;
+}
+
+input{
+    border: 1px solid var(--shadow-color);
+    border-radius: 8px;
+    font-family: 'PoppinsBold';
+    font-size: 1.2em;
+    padding: 0.8em 0.8em;
+    width: 100%;
+    outline-color: var(--primary-color);
+    caret-color: var(--primary-color);
+}
+
+input, .btn{
+    cursor: pointer;
+}
+
+.button-container{
+    position: relative;
+    height: 70px;
+}
+
+.stroke{
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    width: 100%;
+    height: 2px;
+    background-color: var(--shadow-color);
+}
+
+.btn{
+    position: absolute;
+    height: 100%;
+    aspect-ratio: 1/1;
+    border: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    padding: 1.5em;
+}
+
+.output{
+    font-family: 'PoppinsXBoldItalic';
+    font-size: 3em;
+    line-height: 1;
+}
+
+.output span{
+    color: var(--primary-color);
+    font-size: 1.2em;
+}
+
+/* Error Cases */
+label.error-state{
+    color: var(--error-color);
+    
+}
+input.error-state{
+    outline-color: var(--error-color);
+    caret-color: var(--error-color);
+}
+.error-msg{
+    font-family: 'PoppinsItalic';
+    font-size: small;
+    color: var(--error-color);
+    display: none;
+}
+/*  */
+
+@media (min-width: 375px) {
+    .age-calculator{
+        width: 700px;
+        padding: 3em;
+    }
+
+    .input-group{
+        width: 10em;
+    }
+
+    .btn{
+        transform: translateX(0);
+        left: auto;
+        right: 0;
+        transition: background-color 0.3s;
+    }
+
+    .btn:hover{
+        background-color: black;
+    }
+}
